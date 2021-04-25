@@ -55,7 +55,7 @@ Harry Satriyo Hendharto -->
         }
 
         .label {
-            font-size: 35px;
+            font-size: 25px;
             font-weight: 200;
         }
 
@@ -84,7 +84,7 @@ Harry Satriyo Hendharto -->
 <body>
     <div class="chart-container">
         <h1 class="headline">
-            The Decline Of Farming And The Rise Of Everything Else asdasd
+            The Decline Of Farming And The Rise Of Everything Else
         </h1>
 
         <svg width="1050px" height="575px">
@@ -121,16 +121,13 @@ Harry Satriyo Hendharto -->
         ]
 
         let sel_colors = [
-            "rgb(41, 169, 126)", // "Medicaid",
-            "rgb(23, 143, 232)", // "Medicare",
-            "rgb(223, 208, 96)", // "Medicare+Medicaid",
-            "rgb(221, 72, 143)", // "Employer",
-            "rgb(204, 204, 204)", // "Uninsured",
+            "rgb(41, 169, 126)", // "Farming",
+            "rgb(23, 143, 232)", // "BlueCollar",
+            "rgb(223, 208, 96)", // "Services",
+            "rgb(221, 72, 143)", // "WhiteCollar",
+            "rgb(204, 204, 204)", // "Other",
         ]
 
-        // let d2020 = data.filter(d => d.year == 2020)
-
-        // console.log({d2020})
 
     //     //https://github.com/d3/d3-shape#stacks
         let series2020 = d3.stack().keys(sel_cols);
@@ -231,22 +228,42 @@ Harry Satriyo Hendharto -->
             .attr("fill", d => color(d.key))
             .attr("d", area)
 
-            
-
     //         .append("title")
 
-        // svg.append("text")
-        //     .attr("class", "label")
-        //     .attr("x", 500)
-        //     .attr("y", 250)
-        //     .text("Employer")
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 470)
+            .attr("y", 285)
+            .text("Farming")
+            .style("fill", "rgb(41, 169, 126)")
 
-        // svg.append("text")
-        //     .attr("class", "label")
-        //     .attr("x", 80)
-        //     .attr("y", 450)
-        //     .text("Medicaid")
-        //     .style("fill", "white")
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 670)
+            .attr("y", 350)
+            .text("White Collar")
+            .style("fill", "#fa7ab6")
+
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 385)
+            .attr("y", 400)
+            .text("Blue Collar")
+            .style("fill", "#b5c7ff")
+
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 725)
+            .attr("y", 196)
+            .text("Service")
+            .style("fill", "#ffe4a1")
+
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 625)
+            .attr("y", 475)
+            .text("Others")
+            .style("fill", "#9e9e9e")
 
         // svg.append("text")
         //     .attr("class", "label")
