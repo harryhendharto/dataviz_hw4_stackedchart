@@ -68,6 +68,16 @@ Harry Satriyo Hendharto -->
             max-width: 1000px;
             margin: 0 auto;
         }
+
+        .grid line {
+            stroke: lightgrey;
+            stroke-opacity: 0.7;
+            shape-rendering: crispEdges;
+        }
+
+        .grid path {
+            stroke-width: 0;
+        }
     </style>
 </head>
 
@@ -178,6 +188,30 @@ Harry Satriyo Hendharto -->
             .call(yAxisSettings)
             // .call(g => g.selectAll(".domain").remove())
 
+        function make_y_gridlines() {		
+        return d3.axisLeft(y)
+        .ticks(5)
+        }
+
+        function make_x_gridlines() {		
+        return d3.axisBottom(x)
+        .ticks(15)
+        }
+
+        svg.append("g")         
+        .attr("class", "grid")
+        .attr("transform", "translate(0," + height + ")")
+        .call(make_x_gridlines()
+            .tickSize(-height, 0, 0)
+            .tickFormat("")
+        )
+
+        svg.append("g")         
+        .attr("class", "grid")
+        .call(make_y_gridlines()
+            .tickSize(-width, 0, 0)
+            .tickFormat("")
+        )
 
         //     //https://github.com/d3/d3-shape#areas
         let area = d3.area()
@@ -197,6 +231,7 @@ Harry Satriyo Hendharto -->
             .attr("fill", d => color(d.key))
             .attr("d", area)
 
+            
 
     //         .append("title")
 
